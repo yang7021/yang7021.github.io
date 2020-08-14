@@ -52,6 +52,9 @@
       <% } %>
     </div>
     <div class="article-info article-info-index">
+      <%if(!index) {%>
+        <a href="https://github.com/yang7021/yang7021.github.io/edit/source-code/source/<%- post.source %>" target="_blank">编辑</a>
+      <% } %>
       <%if(post.top){%>
         <div class="article-pop-out tagcloud">
           <i class="icon-tuding"></i>
@@ -62,7 +65,6 @@
       <%- partial('post/category') %>
       <% if (index && theme.show_all_link){ %>
         <p class="article-more-link">
-          <a href="https://github.com/yang7021/yang7021.github.io/edit/source-code/source/<%= page.source %>">编辑</a>
           <a class="article-more-a" href="<%- url_for(post.path) %>"><%= theme.show_all_link %> >></a>
         </p>
       <% } %>
