@@ -62,6 +62,7 @@
       <%- partial('post/category') %>
       <% if (index && theme.show_all_link){ %>
         <p class="article-more-link">
+          <a href="https://github.com/yang7021/yang7021.github.io/edit/source-code/source/<%= page.source %>">编辑</a>
           <a class="article-more-a" href="<%- url_for(post.path) %>"><%= theme.show_all_link %> >></a>
         </p>
       <% } %>
@@ -87,7 +88,7 @@
       url: config.url+url_for(post.path)
     }) %>
   <% } %>
-  
+
   <% if (theme.wangyiyun){ %>
   <%- partial('post/wangyiyun', {
       key: post.slug,
