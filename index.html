@@ -151,9 +151,24 @@
     <article id="post-链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/02/%E9%93%BE%E8%A1%A8/">链表</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/02/%E9%93%BE%E8%A1%A8/" class="archive-article-date">
+  	<time datetime="2020-09-02T10:10:21.472Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-02</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-什么是链表"><a href="#1-什么是链表" class="headerlink" title="1.什么是链表"></a>1.什么是链表</h1><p>链表由一系列结点（链表中每一个元素称为结点）组成，结点可以在运行时动态生成。每个结点包括两个部分：一个是存储数据元素的数据域，另一个是存储下一个结点地址的指针域。<br>由于不必须按顺序存储，链表在插入的时候可以达到O(1)的复杂度，但是查找一个节点或者访问特定编号的节点则需要O(n)的时间。</p>
+        <h1 id="12-什么是链表"><a href="#12-什么是链表" class="headerlink" title="12.什么是链表"></a>12.什么是链表</h1><p>链表由一系列结点（链表中每一个元素称为结点）组成，结点可以在运行时动态生成。每个结点包括两个部分：一个是存储数据元素的数据域，另一个是存储下一个结点地址的指针域。<br>由于不必须按顺序存储，链表在插入的时候可以达到O(1)的复杂度，但是查找一个节点或者访问特定编号的节点则需要O(n)的时间。</p>
 <h1 id="2-js模拟链表"><a href="#2-js模拟链表" class="headerlink" title="2.js模拟链表"></a>2.js模拟链表</h1><p>由于js自身不支持链表这个数据结构，所以需要模拟实现一下</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(element) &#123;</span><br><span class="line">        <span class="built_in">this</span>.element = element</span><br><span class="line">        <span class="built_in">this</span>.next = <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkNodeList</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="comment">// 链表</span></span><br><span class="line">        <span class="comment">// 链表相关操作</span></span><br><span class="line">        <span class="comment">// 链表的第一个元素</span></span><br><span class="line">        <span class="built_in">this</span>.head = <span class="literal">null</span></span><br><span class="line">        <span class="built_in">this</span>.length = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 增删改查</span></span><br><span class="line">    <span class="comment">// 其他操作</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 新增</span></span><br><span class="line">    append(element) &#123;</span><br><span class="line">        <span class="keyword">let</span> node = <span class="keyword">new</span> Node(element)</span><br><span class="line">        <span class="keyword">let</span> cur</span><br><span class="line">        <span class="comment">// 两种情况</span></span><br><span class="line">        <span class="comment">// 1. 链表是空的</span></span><br><span class="line">        <span class="comment">// 2. 链表不为空</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">this</span>.head === <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// head 是第一个</span></span><br><span class="line">            <span class="built_in">this</span>.head = node</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 遍历链表</span></span><br><span class="line">            cur = <span class="built_in">this</span>.head</span><br><span class="line">            <span class="keyword">while</span>(cur.next) &#123;</span><br><span class="line">                cur = cur.next</span><br><span class="line">            &#125;</span><br><span class="line">            cur.next = node</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.length += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 查看</span></span><br><span class="line">    print() &#123;</span><br><span class="line">        <span class="keyword">let</span> cur = <span class="built_in">this</span>.head</span><br><span class="line">        <span class="keyword">let</span> ret = []</span><br><span class="line">        <span class="keyword">while</span>(cur) &#123;</span><br><span class="line">            ret.push(cur.element) <span class="comment">// current</span></span><br><span class="line">            cur = cur.next</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret.join(<span class="string">&#x27;===&gt;&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> linkNode = <span class="keyword">new</span> LinkNodeList</span><br><span class="line"></span><br><span class="line">linkNode.append(<span class="string">&#x27;链表一号数据&#x27;</span>)</span><br><span class="line">linkNode.append(<span class="string">&#x27;链表二号数据&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(linkNode.print()) <span class="comment">// &#x27;链表一号数据&#x27; ===&gt; &#x27;链表二号数据&#x27;</span></span><br></pre></td></tr></table></figure>
 
@@ -173,7 +188,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/19/%E9%93%BE%E8%A1%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/09/02/%E9%93%BE%E8%A1%A8/">展开全文 >></a>
         </p>
       
 
@@ -210,13 +225,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/19/hello-world/">Hello World</a>
+      <a class="article-title" href="/2020/09/02/hello-world/">Hello World</a>
     </h1>
   
 
         
-        <a href="/2020/08/19/hello-world/" class="archive-article-date">
-  	<time datetime="2020-08-19T09:36:17.510Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
+        <a href="/2020/09/02/hello-world/" class="archive-article-date">
+  	<time datetime="2020-09-02T10:10:21.472Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-02</time>
 </a>
         
       </header>
@@ -249,7 +264,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/19/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/09/02/hello-world/">展开全文 >></a>
         </p>
       
 
